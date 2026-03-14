@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { DrawerDemo } from "./demos/DrawerDemo";
+import { CardSliderDemo } from "./demos/CardSliderDemo";
 import "./App.css";
 
 const COMPONENTS = [
   { id: "drawer", label: "Drawer" },
-  // { id: "cardslider", label: "Card Slider" },
+  { id: "cardslider", label: "Card Slider" },
   // { id: "inputpin", label: "Input Pin" },
   // { id: "popover", label: "Popover" },
 ];
@@ -29,7 +30,10 @@ export default function App() {
         </nav>
       </aside>
 
-      <main className="main">{active === "drawer" && <DrawerDemo />}</main>
+      <main className="main">
+        {active === "drawer" && <DrawerDemo />}
+        {active === "cardslider" && <CardSliderDemo />}
+      </main>
     </div>
   );
 }
