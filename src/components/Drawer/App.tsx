@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Drawer } from "./components/Drawer";
+import { Drawer } from "./Drawer";
 
 /**
  * App.tsx — Demo
@@ -23,7 +23,10 @@ export default function App() {
   return (
     <div style={{ padding: "40px", fontFamily: "sans-serif" }}>
       <h1>Drawer Component</h1>
-      <p>Resize the window below 750px to see it switch from side drawer to bottom sheet.</p>
+      <p>
+        Resize the window below 750px to see it switch from side drawer to
+        bottom sheet.
+      </p>
 
       <button
         onClick={() => setIsOpen(true)}
