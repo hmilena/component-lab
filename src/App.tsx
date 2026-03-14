@@ -4,7 +4,6 @@ import "./App.css";
 
 const COMPONENTS = [
   { id: "drawer", label: "Drawer" },
-  // Adiciona aqui quando criar novos componentes:
   // { id: "cardslider", label: "Card Slider" },
   // { id: "inputpin", label: "Input Pin" },
   // { id: "popover", label: "Popover" },
@@ -30,9 +29,7 @@ export default function App() {
         </nav>
       </aside>
 
-      <main className="main">
-        {active === "drawer" && <DrawerDemo />}
-      </main>
+      <main className="main">{active === "drawer" && <DrawerDemo />}</main>
     </div>
   );
 }
