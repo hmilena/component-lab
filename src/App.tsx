@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { DrawerDemo } from "./demos/DrawerDemo";
 import { CardSliderDemo } from "./demos/CardSliderDemo";
+import { InputPinDemo } from "./demos/InputPinDemo";
+import { ContentPopoverDemo } from "./demos/ContentPopoverDemo";
+import { DropdownSubmenuDemo } from "./demos/DropdownSubmenuDemo";
 import "./App.css";
 
 const COMPONENTS = [
   { id: "drawer", label: "Drawer" },
   { id: "cardslider", label: "Card Slider" },
-  // { id: "inputpin", label: "Input Pin" },
-  // { id: "popover", label: "Popover" },
+  { id: "inputpin", label: "Input Pin" },
+  { id: "popover", label: "Popover" },
+  { id: "dropdown", label: "Dropdown Submenu" },
 ];
 
 export default function App() {
@@ -33,6 +37,9 @@ export default function App() {
       <main className="main">
         {active === "drawer" && <DrawerDemo />}
         {active === "cardslider" && <CardSliderDemo />}
+        {active === "inputpin" && <InputPinDemo />}
+        {active === "popover" && <ContentPopoverDemo />}
+        {active === "dropdown" && <DropdownSubmenuDemo />}
       </main>
     </div>
   );
