@@ -20,7 +20,7 @@ export default function App() {
   return (
     <div className="layout">
       <aside className="sidebar">
-        <div className="sidebar__logo">React Components</div>
+        <div className="sidebar__logo">Mia Components Lab</div>
         <nav className="sidebar__nav">
           {COMPONENTS.map((c) => (
             <button
