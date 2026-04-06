@@ -20,14 +20,17 @@ export function DrawerDemo() {
     <div className="max-w-2xl mx-auto px-6 py-8 space-y-10">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Drawer</h1>
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+          Drawer
+        </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
           Painel lateral no desktop, bottom sheet no mobile. Reescrita do{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
-            DrawerCore.js
+            Drawer.js
           </code>{" "}
           produzido para o BPI Net Empresas. Redimensiona a janela abaixo de{" "}
-          <strong className="text-gray-700">750px</strong> para ver a mudança de comportamento.
+          <strong className="text-gray-700">750px</strong> para ver a mudança de
+          comportamento.
         </p>
       </div>
 
@@ -58,8 +61,16 @@ export function DrawerDemo() {
               className="flex items-start gap-2 text-sm text-gray-600 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-xs"
             >
               <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
-                <svg className="w-2.5 h-2.5" viewBox="0 0 10 10" fill="currentColor">
-                  <path fillRule="evenodd" d="M8.354 2.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L3.5 6.793l4.146-4.147a.5.5 0 01.708 0z" clipRule="evenodd" />
+                <svg
+                  className="w-2.5 h-2.5"
+                  viewBox="0 0 10 10"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8.354 2.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L3.5 6.793l4.146-4.147a.5.5 0 01.708 0z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </span>
               {f}

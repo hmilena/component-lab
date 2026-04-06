@@ -2,15 +2,16 @@
 
 Production-grade UI components built with React 18 and TypeScript — each one a rewrite of a Vanilla JS component originally built for enterprise clients in Portugal (Banco BPI, Ericsson, Fidelidade).
 
-The goal was not to recreate the DOM manipulation logic, but to translate the *intent* of each component into idiomatic React: state instead of class mutation, hooks instead of prototype methods, declarative rendering instead of imperative DOM queries.
+The goal was not to recreate the DOM manipulation logic, but to translate the _intent_ of each component into idiomatic React: state instead of class mutation, hooks instead of prototype methods, declarative rendering instead of imperative DOM queries.
 
-**[Live demo →](https://hmilena.github.io/ReactComponents)** <!-- update with your actual deploy URL -->
+**[Live demo →](https://mia-components-lab.vercel.app/)**
 
 ---
 
 ## Components
 
 ### Drawer
+
 Responsive panel that switches between a side drawer on desktop and a swipeable bottom sheet on mobile.
 
 - `ResizeObserver` drives the layout switch — no media query breakpoints
@@ -24,6 +25,7 @@ Responsive panel that switches between a side drawer on desktop and a swipeable 
 ---
 
 ### Card Slider
+
 Horizontal card slider with drag-to-scroll and animated arrow navigation.
 
 - Drag state (`startX`, `scrollLeft`) stored in `useRef` — persists between events without triggering re-renders
@@ -36,6 +38,7 @@ Horizontal card slider with drag-to-scroll and animated arrow navigation.
 ---
 
 ### Input Pin
+
 4-digit PIN input with per-field focus management, digit masking, and keyboard navigation.
 
 - Each field is an independent controlled input — value array stored in state
@@ -47,6 +50,7 @@ Horizontal card slider with drag-to-scroll and animated arrow navigation.
 ---
 
 ### Content Popover
+
 Floating content panel anchored to a trigger button, rendered via React portal.
 
 - Uses `createPortal` to render at body level — never clipped by `overflow: hidden` ancestors
@@ -57,15 +61,61 @@ Floating content panel anchored to a trigger button, rendered via React portal.
 
 **Hooks:** `usePopoverPosition` · `PopoverContext`
 
----
-
 ### Dropdown Submenu
+
 Two-level navigation dropdown with active state propagation.
 
 - Active state derived from `defaultActiveId` prop and propagated up the tree declaratively — no DOM traversal
 - Only one submenu open at a time — controlled by a single `openSubmenuId` state
 - Submenu opens to the right of the parent item
 - Closes on ESC or outside click
+
+---
+
+### Gallery & Lightbox
+
+Image gallery with thumbnail navigation and a full-screen lightbox, using render props for maximum flexibility.
+
+- **Render props pattern** — allows custom rendering for both main images and thumbnails while keeping navigation logic internal
+- Lightbox supports keyboard navigation (←, →, ESC) and touch gestures
+- **Thumbnail synchronization** — the thumbnail strip auto-scrolls to keep the active image in view
+- **Clean view** — toggleable UI in lightbox to focus entirely on the content
+- Drag-to-scroll on thumbnail strips using `useRef` for performance
+
+**Hooks:** `useGallery` · `useLightboxGallery` · `useTouch`
+
+---
+
+### Post Interactions
+
+Set of components for user engagement (Likes and Ratings) featuring optimistic UI patterns.
+
+- **Optimistic Updates** — state updates immediately on user click, with automatic rollback if the simulated API call fails
+- **Persistence** — uses `localStorage` to remember user's choice and prevent double-voting without a backend
+- **SEO Ready** — `PostRating` generates JSON-LD `aggregateRating` schema for Google search snippets
+- **Accessibility** — full ARIA support (`aria-pressed`, `aria-live`) and keyboard navigation for the rating stars
+- Micro-animations: SVG sparkle effects on like and smooth star transitions
+
+---
+
+### Skeleton
+
+Lightweight loading placeholders with CSS-only shimmer animations.
+
+- Pure CSS animations — no heavy JS-driven animation libraries
+- **Composable** — can be used to build complex loading layouts (cards, lists, profiles)
+- Configurable dimensions and border-radius via props
+
+---
+
+### Reading Progress Bar
+
+Visual indicator of reading progress that tracks scroll position relative to the article content.
+
+- **Targeted Tracking** — tracks progress within a specific `ref` container, not just the entire page
+- **Performance Optimized** — passive scroll listeners with window-relative calculations
+- Sticky positioning at the top of the viewport
+- Uses CSS `color-mix` and gradients for a premium feel
 
 ---
 
