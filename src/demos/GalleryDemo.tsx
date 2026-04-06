@@ -42,14 +42,14 @@ const IMAGES = [
 ];
 
 const features = [
-  "Navegação com botões e miniaturas clicáveis",
-  "Render props — funciona com qualquer estrutura de dados",
-  "Autoplay configurável",
-  "Lightbox com teclado (← → ESC)",
-  "Drag-to-scroll nas miniaturas do lightbox",
-  "Clean view — esconde UI para ver só a imagem",
-  "Sync automático da janela de miniaturas",
-  "Touch support no mobile",
+  "Navigation with buttons and clickable thumbnails",
+  "Render props — works with any data structure",
+  "Configurable autoplay",
+  "Keyboard-supported lightbox (← → ESC)",
+  "Drag-to-scroll on lightbox thumbnails",
+  "Clean view — hides UI to focus on image",
+  "Automatic thumbnail window sync",
+  "Touch support for mobile",
 ];
 
 type ImageItem = (typeof IMAGES)[0];
@@ -64,10 +64,10 @@ export function GalleryDemo() {
           Gallery & Lightbox
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Galeria de imagens com miniaturas e lightbox full-screen.
+          Image gallery with thumbnails and full-screen lightbox.
         </p>
         <p className="mt-.5 text-sm block text-gray-500 leading-relaxed">
-          Extraído do
+          Extracted from
           <a
             href="https://blogdamia.com.br"
             target="_blank"
@@ -98,7 +98,7 @@ export function GalleryDemo() {
             )}
           />
           <p className="text-xs text-gray-400 mt-3">
-            Clica na imagem principal para abrir o lightbox.
+            Click the main image to open the lightbox.
           </p>
         </div>
       </section>
@@ -116,7 +116,7 @@ export function GalleryDemo() {
 
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (

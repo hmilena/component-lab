@@ -1,10 +1,10 @@
 import Skeleton from "../components/Skeleton/Skeleton";
 
 const features = [
-  "Shimmer animado com CSS puro",
-  "Width e height configuráveis",
-  "Aceita style inline para casos especiais",
-  "Compõe qualquer layout de loading",
+  "Animated shimmer with pure CSS",
+  "Configurable width and height",
+  "Accepts inline style for special cases",
+  "Compose any loading layout",
 ];
 
 export function SkeletonDemo() {
@@ -15,10 +15,10 @@ export function SkeletonDemo() {
           Skeleton
         </h1>
         <p className="mt-2 text-sm block text-gray-500 leading-relaxed">
-          Placeholder de loading com animação shimmer.
+          Loading placeholder with shimmer animation.
         </p>
         <p className="mt-.5 text-sm block text-gray-500 leading-relaxed">
-          Extraído do
+          Extracted from
           <a
             href="https://blogdamia.com.br"
             target="_blank"
@@ -78,7 +78,7 @@ export function SkeletonDemo() {
 
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (

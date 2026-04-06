@@ -2,42 +2,42 @@ import { DropdownSubmenu, MenuItem } from "../components/DropdownSubmenu";
 
 const MENU_SIMPLES: MenuItem[] = [
   { id: "dashboard", label: "Dashboard", href: "#" },
-  { id: "relatorios", label: "Relatórios", href: "#" },
-  { id: "configuracoes", label: "Configurações", href: "#" },
+  { id: "reports", label: "Reports", href: "#" },
+  { id: "settings", label: "Settings", href: "#" },
 ];
 
 const MENU_COM_SUBNIVEIS: MenuItem[] = [
   {
-    id: "conta",
-    label: "Conta",
+    id: "account",
+    label: "Account",
     children: [
-      { id: "perfil", label: "Perfil", href: "#" },
-      { id: "seguranca", label: "Segurança", href: "#" },
-      { id: "notificacoes", label: "Notificações", href: "#" },
+      { id: "profile", label: "Profile", href: "#" },
+      { id: "security", label: "Security", href: "#" },
+      { id: "notifications", label: "Notifications", href: "#" },
     ],
   },
   {
-    id: "produtos",
-    label: "Produtos",
+    id: "products",
+    label: "Products",
     children: [
-      { id: "depositos", label: "Depósitos", href: "#" },
-      { id: "credito", label: "Crédito", href: "#" },
-      { id: "seguros", label: "Seguros", href: "#" },
-      { id: "investimentos", label: "Investimentos", href: "#" },
+      { id: "deposits", label: "Deposits", href: "#" },
+      { id: "loans", label: "Loans", href: "#" },
+      { id: "insurance", label: "Insurance", href: "#" },
+      { id: "investments", label: "Investments", href: "#" },
     ],
   },
-  { id: "suporte", label: "Suporte", href: "#" },
-  { id: "sair", label: "Sair", href: "#" },
+  { id: "support", label: "Support", href: "#" },
+  { id: "logout", label: "Logout", href: "#" },
 ];
 
 const features = [
-  "Dois níveis de navegação",
-  "Só um submenu aberto de cada vez",
-  "Active state propaga dos filhos para o trigger",
-  "Fecha ao clicar fora",
-  "Fecha ao carregar ESC",
-  "Fecha ao clicar num item folha",
-  "Animação de entrada com fade + slide",
+  "Two levels of navigation",
+  "Only one submenu open at a time",
+  "Active state propagates from children to trigger",
+  "Closes on click outside",
+  "Closes on ESC key",
+  "Closes on leaf item click",
+  "Fade + Slide enter animation",
 ];
 
 export function DropdownSubmenuDemo() {
@@ -49,12 +49,12 @@ export function DropdownSubmenuDemo() {
           Dropdown Submenu
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Dropdown com dois níveis de navegação, propagação de active state e
-          fechamento por ESC ou click fora. Reescrita do{" "}
+          Dropdown with two levels of navigation, active state propagation, and
+          ESC or outside click closing. A rewrite of the{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
             DropdownSubmenu.js
           </code>{" "}
-          produzido para o BPI Net Empresas.
+          originally built for BPI Net Empresas.
         </p>
       </div>
 
@@ -65,23 +65,23 @@ export function DropdownSubmenuDemo() {
         </h2>
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
           <div>
-            <p className="text-xs text-gray-400 mb-3">Sem subníveis</p>
+            <p className="text-xs text-gray-400 mb-3">Single level</p>
             <DropdownSubmenu label="Menu" items={MENU_SIMPLES} />
           </div>
 
           <div>
-            <p className="text-xs text-gray-400 mb-3">Com subníveis</p>
+            <p className="text-xs text-gray-400 mb-3">With submenus</p>
             <div className="flex gap-3">
               <DropdownSubmenu
-                label="Meu Banco"
+                label="My Bank"
                 items={MENU_COM_SUBNIVEIS}
-                defaultActiveId="credito"
+                defaultActiveId="loans"
               />
-              <DropdownSubmenu label="Outro menu" items={MENU_SIMPLES} />
+              <DropdownSubmenu label="Other menu" items={MENU_SIMPLES} />
             </div>
             <p className="mt-4 text-xs text-gray-400">
-              "Crédito" está marcado como activo — o estado propaga até ao
-              trigger. Abre os dois menus e vê como fecham entre si.
+              "Loans" is marked as active — the state propagates up to the
+              trigger. Open both menus to see them close each other.
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export function DropdownSubmenuDemo() {
       {/* Features */}
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (

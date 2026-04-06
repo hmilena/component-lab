@@ -117,7 +117,7 @@ export function InputPin({
           onKeyDown={(e) => handleKeyDown(e, i)}
           onChange={(e) => handleChange(e, i)}
           autoComplete="off"
-          aria-label={`Dígito ${i + 1} de ${length}`}
+          aria-label={`Digit ${i + 1} of ${length}`}
           className={[
             "w-14 h-16 text-center text-2xl font-semibold rounded-xl border-2 outline-none",
             "bg-white caret-transparent transition-all duration-150",

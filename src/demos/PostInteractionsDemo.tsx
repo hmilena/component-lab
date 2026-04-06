@@ -21,20 +21,20 @@ window.fetch = ((url: string, options?: RequestInit) => {
 
 const likesFeatures = [
   "Toggle like/unlike",
-  "Optimistic update com rollback em caso de erro",
-  "Persistência em localStorage — não repete voto",
-  "Animação de sparkle ao dar like",
+  "Optimistic update with rollback on error",
+  "localStorage persistence — prevents double voting",
+  "Sparkle animation on like",
   "ARIA: aria-pressed, aria-live",
-  "Variante sm para espaços compactos",
+  "Small (sm) variant for compact spaces",
 ];
 
 const ratingFeatures = [
-  "Half-star display (ex: 4.5 ★)",
-  "Hover preview antes de votar",
-  "Optimistic update com rollback",
-  "localStorage — não repete voto",
-  "Schema.org aggregateRating para SEO",
-  "Navegação por teclado (Enter / Space)",
+  "Half-star display (e.g., 4.5 ★)",
+  "Hover preview before voting",
+  "Optimistic update with rollback",
+  "localStorage — prevents double voting",
+  "Schema.org aggregateRating for SEO",
+  "Keyboard navigation (Enter / Space)",
 ];
 
 export function PostInteractionsDemo() {
@@ -45,10 +45,10 @@ export function PostInteractionsDemo() {
           Post Interactions
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Likes e ratings para posts de blog com optimistic UI e persistência.
+          Likes and ratings for blog posts with optimistic UI and persistence.
         </p>
         <p className="mt-.5 text-sm block text-gray-500 leading-relaxed">
-          Extraído do
+          Extracted from
           <a
             href="https://blogdamia.com.br"
             target="_blank"
@@ -80,7 +80,7 @@ export function PostInteractionsDemo() {
               />
             </div>
             <div>
-              <p className="text-xs text-gray-400 mb-2">Sem likes</p>
+              <p className="text-xs text-gray-400 mb-2">No likes</p>
               <PostLikes postId="demo-3" likesCount={0} apiBase="/api" />
             </div>
           </div>
@@ -118,7 +118,7 @@ export function PostInteractionsDemo() {
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 flex flex-col gap-6">
           <div className="flex items-start gap-10 flex-wrap">
             <div>
-              <p className="text-xs text-gray-400 mb-2">Com votos (4.3 ★)</p>
+              <p className="text-xs text-gray-400 mb-2">With votes (4.3 ★)</p>
               <PostRating
                 postId="demo-r1"
                 postTitle="Demo Post"
@@ -129,10 +129,10 @@ export function PostInteractionsDemo() {
               />
             </div>
             <div>
-              <p className="text-xs text-gray-400 mb-2">Sem votos</p>
+              <p className="text-xs text-gray-400 mb-2">No votes</p>
               <PostRating
                 postId="demo-r2"
-                postTitle="Novo Post"
+                postTitle="New Post"
                 postUrl="https://example.com"
                 ratingTotal={0}
                 ratingCount={0}

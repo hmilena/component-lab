@@ -1,14 +1,14 @@
 import { ContentPopover, PopoverProvider } from "../components/ContentPopover";
 
 const features = [
-  "Portal — renderiza no body, nunca cortado por overflow",
-  "Posicionamento dinâmico — não sai do viewport",
-  "Fecha ao abrir outro (via Context)",
-  "Fecha ao clicar fora",
-  "Fecha ao carregar ESC",
-  "Fecha ao clicar em link/botão dentro",
-  "Reposiciona em scroll e resize",
-  "Animação de entrada com fade + slide",
+  "Portal — renders at body level, never cut off by overflow",
+  "Dynamic positioning — stays within the viewport",
+  "Closes automatically when another opens (via Context)",
+  "Closes on click outside",
+  "Closes on ESC key",
+  "Closes on click of any link/button inside",
+  "Repositions on scroll and resize",
+  "Fade + Slide enter animation",
 ];
 
 export function ContentPopoverDemo() {
@@ -20,29 +20,29 @@ export function ContentPopoverDemo() {
           Content Popover
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Popover com posicionamento dinâmico, portal para o body e fechamento
-          automático entre instâncias. Reescrita do{" "}
+          Popover with dynamic positioning, body portal, and automatic closing
+          between instances. A rewrite of the{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
             ContentPopover.js
           </code>{" "}
-          produzido para o BPI Net Empresas.
+          originally built for BPI Net Empresas.
         </p>
       </div>
 
       {/* Demo card */}
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Demo — abre vários e vê como fecham entre si
+          Demo — open multiple to see them close each other
         </h2>
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
           <PopoverProvider>
             <div className="flex gap-4 flex-wrap">
-              <ContentPopover trigger="Conta">
+              <ContentPopover trigger="Account">
                 <h3 className="text-sm font-semibold text-gray-900 mb-2">
-                  A minha conta
+                  My Account
                 </h3>
                 <ul className="space-y-0.5">
-                  {["Perfil", "Definições", "Segurança", "Sair"].map((item) => (
+                  {["Profile", "Settings", "Security", "Logout"].map((item) => (
                     <li key={item}>
                       <a
                         href="#"
@@ -56,25 +56,25 @@ export function ContentPopoverDemo() {
                 </ul>
               </ContentPopover>
 
-              <ContentPopover trigger="Produtos">
+              <ContentPopover trigger="Products">
                 <h3 className="text-sm font-semibold text-gray-900 mb-2">
-                  Produtos
+                  Products
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  Explora os nossos produtos e serviços financeiros disponíveis
-                  para empresas e particulares.
+                  Explore our financial products and services available for
+                  businesses and individuals.
                 </p>
                 <button className="mt-3 px-4 py-2 bg-blue-600 text-white text-xs font-medium rounded-lg border-0 cursor-pointer hover:bg-blue-700 transition-colors">
-                  Ver todos
+                  View all
                 </button>
               </ContentPopover>
 
-              <ContentPopover trigger="Suporte">
+              <ContentPopover trigger="Support">
                 <h3 className="text-sm font-semibold text-gray-900 mb-2">
-                  Suporte
+                  Support
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  Precisas de ajuda? A nossa equipa está disponível 24/7.
+                  Need help? Our team is available 24/7.
                 </p>
               </ContentPopover>
             </div>
@@ -85,7 +85,7 @@ export function ContentPopoverDemo() {
       {/* Features */}
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (

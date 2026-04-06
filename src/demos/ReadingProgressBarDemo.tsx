@@ -21,10 +21,10 @@ export function ReadingProgressBarDemo() {
           Reading Progress Bar
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Barra de progresso que acompanha a leitura de um artigo.
+          Progress bar that tracks the reading depth of an article.
         </p>
         <p className="mt-.5 text-sm block text-gray-500 leading-relaxed">
-          Extraído do
+          Extracted from
           <a
             href="https://blogdamia.com.br"
             target="_blank"
@@ -37,14 +37,14 @@ export function ReadingProgressBarDemo() {
 
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Demo (Scrolle para ver)
+          Demo (Scroll to see)
         </h2>
         <div
           ref={contentRef}
           className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 prose prose-slate"
           style={{ maxHeight: "400px", overflowY: "auto" }}
         >
-          <h3>O Futuro da Web</h3>
+          <h3>The Future of the Web</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -94,13 +94,13 @@ export function ReadingProgressBarDemo() {
           </p>
         </div>
         <p className="text-xs text-gray-400 mt-3 text-center">
-          ↑ A barra aparece no TOPO da página ao scrollar este box ↑
+          ↑ The bar appears at the TOP of the page when scrolling this box ↑
         </p>
       </section>
 
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (

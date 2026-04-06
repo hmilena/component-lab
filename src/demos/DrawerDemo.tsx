@@ -2,15 +2,15 @@ import { useState } from "react";
 import { Drawer } from "./../components/Drawer/Drawer";
 
 const features = [
-  "Side panel no desktop (≥ 750px)",
-  "Bottom sheet no mobile (< 750px)",
-  "Swipe para fechar no touch",
-  "Snap threshold — só fecha se arrastar mais de ⅓",
-  "ESC para fechar",
-  "Clique no overlay fecha",
-  "Scroll lock no body enquanto aberto",
-  "Animação de entrada e saída (600ms)",
-  "ResizeObserver — muda de modo sem reload",
+  "Side panel on desktop (≥ 750px)",
+  "Bottom sheet on mobile (< 750px)",
+  "Swipe to dismiss on touch",
+  "Snap threshold — only closes if dragged more than ⅓",
+  "ESC to close",
+  "Overlay click to close",
+  "Body scroll lock while open",
+  "Enter and exit animations (600ms)",
+  "ResizeObserver — switches mode without reload",
 ];
 
 export function DrawerDemo() {
@@ -24,13 +24,12 @@ export function DrawerDemo() {
           Drawer
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Painel lateral no desktop, bottom sheet no mobile. Reescrita do{" "}
+          Side panel on desktop, bottom sheet on mobile. A rewrite of the{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
             Drawer.js
           </code>{" "}
-          produzido para o BPI Net Empresas. Redimensiona a janela abaixo de{" "}
-          <strong className="text-gray-700">750px</strong> para ver a mudança de
-          comportamento.
+          originally built for BPI Net Empresas. Resize the window below{" "}
+          <strong className="text-gray-700">750px</strong> to see the behavior change.
         </p>
       </div>
 
@@ -44,7 +43,7 @@ export function DrawerDemo() {
             className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-colors cursor-pointer border-0"
             onClick={() => setIsOpen(true)}
           >
-            Abrir Drawer
+            Open Drawer
           </button>
         </div>
       </section>
@@ -52,7 +51,7 @@ export function DrawerDemo() {
       {/* Features */}
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (
@@ -80,19 +79,19 @@ export function DrawerDemo() {
       </section>
 
       <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <h2 className="text-xl font-semibold text-gray-900 mb-3">Olá 👋</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-3">Hello 👋</h2>
         <p className="text-gray-500 text-sm leading-relaxed mb-3">
-          Este drawer abre como painel lateral no desktop e como bottom sheet no
-          mobile — com swipe to dismiss.
+          This drawer opens as a side panel on desktop and as a bottom sheet on
+          mobile — with swipe to dismiss.
         </p>
         <p className="text-gray-500 text-sm leading-relaxed mb-6">
-          Tenta fechar de três formas: botão ✕, clicar no overlay, ou ESC.
+          Try closing it in three ways: the ✕ button, clicking the overlay, or pressing ESC.
         </p>
         <button
           className="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors cursor-pointer border-0"
           onClick={() => setIsOpen(false)}
         >
-          Fechar
+          Close
         </button>
       </Drawer>
     </div>

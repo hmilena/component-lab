@@ -12,12 +12,12 @@ const CARDS = [
 ];
 
 const features = [
-  "Drag-to-scroll com mouse",
-  "Navegação por botões com scroll animado",
-  "Botões desabilitados nos limites",
-  "Fade nas bordas para indicar overflow",
-  "4 cards no desktop / 3 no tablet / 2 no mobile",
-  "ResizeObserver — adapta sem reload",
+  "Mouse drag-to-scroll",
+  "Button navigation with animated scroll",
+  "Disabled buttons at boundaries",
+  "Fade borders to indicate overflow",
+  "4 cards on desktop / 3 on tablet / 2 on mobile",
+  "ResizeObserver — adapts without reload",
 ];
 
 export function CardSliderDemo() {
@@ -27,12 +27,12 @@ export function CardSliderDemo() {
       <div>
         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Card Slider</h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Slider horizontal com drag-to-scroll, botões de navegação animados e número de cards
-          responsivo. Reescrita do{" "}
+          Horizontal slider with drag-to-scroll, animated navigation buttons, and responsive card
+          counts. A rewrite of the{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
             CardSlider.js
           </code>{" "}
-          produzido para o BPI Net Empresas.
+          originally built for BPI Net Empresas.
         </p>
       </div>
 
@@ -59,7 +59,7 @@ export function CardSliderDemo() {
       {/* Features */}
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (

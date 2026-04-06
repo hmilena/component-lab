@@ -4,14 +4,14 @@ import { InputPin } from "../components/InputPin";
 type Status = "idle" | "loading" | "success" | "error";
 
 const features = [
-  "Avanço automático ao digitar",
-  "Recuo com Backspace — apaga e volta ao campo anterior",
-  "Navegação com ← →",
-  "Máscara • após 100ms",
-  "Callback onComplete quando todos os campos preenchidos",
-  "Estado disabled durante validação",
-  "Reset automático após completar",
-  "Acessível — aria-label em cada campo",
+  "Auto-advance on type",
+  "Backspace to go back — clears and returns to previous field",
+  "Navigation with ← → keys",
+  "Mask pattern • after 100ms",
+  "onComplete callback when all fields are filled",
+  "Disabled state during validation",
+  "Auto-reset after completion",
+  "Accessible — aria-label on each field",
 ];
 
 export function InputPinDemo() {
@@ -25,10 +25,10 @@ export function InputPinDemo() {
     setTimeout(() => {
       if (value === "1234") {
         setStatus("success");
-        setMessage("PIN correto!");
+        setMessage("Correct PIN!");
       } else {
         setStatus("error");
-        setMessage(`PIN "${value}" incorreto. Tenta 1234.`);
+        setMessage(`Incorrect PIN "${value}". Try 1234.`);
       }
       setTimeout(() => setStatus("idle"), 2000);
     }, 800);
@@ -42,15 +42,15 @@ export function InputPinDemo() {
           Input Pin
         </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
-          Input de PIN com 4 campos independentes, máscara de dígitos, navegação
-          por teclado e validação ao completar. Reescrita do{" "}
+          PIN input with 4 independent fields, digit masking, keyboard
+          navigation, and completion validation. A rewrite of the{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
             InputPin.js
           </code>{" "}
-          produzido para o BPI Net Empresas.
+          originally built for BPI Net Empresas.
         </p>
         <p className="mt-2 text-sm font-semibold text-gray-700">
-          PIN correto:{" "}
+          Correct PIN:{" "}
           <code className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-mono">
             1234
           </code>
@@ -73,7 +73,7 @@ export function InputPinDemo() {
             {status === "loading" && (
               <span className="flex items-center gap-2 text-sm text-gray-400">
                 <span className="inline-block w-3.5 h-3.5 rounded-full border-2 border-gray-300 border-t-blue-500 animate-spin" />
-                A validar…
+                Validating…
               </span>
             )}
             {status === "success" && (
@@ -115,7 +115,7 @@ export function InputPinDemo() {
       {/* Features */}
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Funcionalidades
+          Features
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {features.map((f) => (
