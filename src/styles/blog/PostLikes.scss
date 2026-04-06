@@ -1,0 +1,91 @@
+@use './variables' as v;
+@use './mixins' as m;
+
+@keyframes sparkle-burst {
+  0%   { transform: scale(0) rotate(0deg); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: scale(1.8) rotate(45deg); opacity: 0; }
+}
+
+.post-likes {
+  display: inline-flex;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: v.$gap-sm;
+  }
+
+  &__btn {
+    @include m.btn-reset;
+    position: relative;
+    font-size: 22px;
+    color: v.$color-text-muted;
+    transition: color v.$transition-fast, transform v.$transition-fast;
+    padding: v.$gap-xs;
+
+    &:hover:not(:disabled) {
+      color: v.$color-heart;
+      transform: scale(1.1);
+    }
+
+    &:disabled { cursor: default; }
+
+    &.is-liked {
+      color: v.$color-heart;
+
+      .post-likes__sparkles i {
+        animation: sparkle-burst 0.5s ease forwards;
+
+        &:nth-child(1) { top: -8px;  left: 50%;   animation-delay: 0s; }
+        &:nth-child(2) { top: 50%;   left: -8px;  animation-delay: 0.05s; }
+        &:nth-child(3) { top: 50%;   right: -8px; animation-delay: 0.05s; }
+        &:nth-child(4) { bottom: -8px; left: 25%; animation-delay: 0.1s; }
+        &:nth-child(5) { bottom: -8px; right: 25%; animation-delay: 0.1s; }
+      }
+    }
+  }
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+  }
+
+  &__sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    i {
+      position: absolute;
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: v.$radius-full;
+      background: v.$color-heart;
+      opacity: 0;
+    }
+  }
+
+  &__meta {
+    font-size: v.$font-size-sm;
+    color: v.$color-text-muted;
+
+    strong {
+      color: v.$color-text;
+      font-weight: 600;
+    }
+  }
+
+  &__status {
+    font-size: v.$font-size-xs;
+    color: #dc2626;
+    min-height: 1em;
+  }
+
+  // Small variant
+  &--sm {
+    .post-likes__btn { font-size: 16px; }
+    .post-likes__meta { font-size: v.$font-size-xs; }
+  }
+}

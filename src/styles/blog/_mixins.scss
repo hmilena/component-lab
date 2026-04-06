@@ -1,0 +1,31 @@
+@use './variables' as v;
+
+@mixin phone {
+  @media (max-width: 600px) { @content; }
+}
+@mixin tablet {
+  @media (max-width: 768px) { @content; }
+}
+@mixin desktop {
+  @media (max-width: 1200px) { @content; }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column($gap: v.$gap-default) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin btn-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}

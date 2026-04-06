@@ -1,0 +1,61 @@
+@use './variables' as v;
+@use './mixins' as m;
+
+.post-rating {
+  display: inline-flex;
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: v.$gap-default;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  &__star {
+    @include m.btn-reset;
+    font-size: 26px;
+    color: v.$color-star;
+    transition: transform v.$transition-fast, color v.$transition-fast;
+
+    &:hover:not(:disabled):not(.is-locked) {
+      transform: scale(1.15);
+    }
+
+    &:disabled,
+    &.is-locked {
+      cursor: default;
+    }
+
+    &.is-locked {
+      color: color-mix(in srgb, v.$color-star 70%, white);
+    }
+  }
+
+  &__subtitle {
+    font-size: v.$font-size-sm;
+    color: v.$color-text-muted;
+    margin-top: 4px;
+
+    strong {
+      color: v.$color-text;
+      font-weight: 600;
+    }
+  }
+
+  &__status {
+    font-size: v.$font-size-xs;
+    color: v.$color-text-muted;
+    margin-top: 2px;
+    min-height: 1em;
+  }
+
+  // Small variant
+  &--sm {
+    .post-rating__star { font-size: 18px; }
+    .post-rating__subtitle { font-size: v.$font-size-xs; }
+  }
+}
