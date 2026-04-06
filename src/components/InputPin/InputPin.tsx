@@ -1,5 +1,4 @@
 import { useRef, useState, useCallback, useEffect } from "react";
-import "./InputPin.css";
 
 interface InputPinProps {
   length?: number;
@@ -35,7 +34,6 @@ export function InputPin({
 
   const handleClick = useCallback((index: number) => {
     clickedIndexRef.current = index;
-    // If field has a value, select it so next key replaces it
     if (values[index]) inputRefs.current[index]?.select();
   }, [values]);
 
@@ -46,29 +44,11 @@ export function InputPin({
 
       if (key === "Backspace") {
         if (!isEmpty) {
-          // Clear current field
-          setValues((prev) => {
-            const next = [...prev];
-            next[index] = "";
-            return next;
-          });
-          setMasked((prev) => {
-            const next = [...prev];
-            next[index] = false;
-            return next;
-          });
+          setValues((prev) => { const next = [...prev]; next[index] = ""; return next; });
+          setMasked((prev) => { const next = [...prev]; next[index] = false; return next; });
         } else if (index > 0) {
-          // Field already empty — go back and clear previous
-          setValues((prev) => {
-            const next = [...prev];
-            next[index - 1] = "";
-            return next;
-          });
-          setMasked((prev) => {
-            const next = [...prev];
-            next[index - 1] = false;
-            return next;
-          });
+          setValues((prev) => { const next = [...prev]; next[index - 1] = ""; return next; });
+          setMasked((prev) => { const next = [...prev]; next[index - 1] = false; return next; });
           focusAt(index - 1);
         }
         e.preventDefault();
@@ -76,16 +56,8 @@ export function InputPin({
 
       if (key === "Delete") {
         if (!isEmpty) {
-          setValues((prev) => {
-            const next = [...prev];
-            next[index] = "";
-            return next;
-          });
-          setMasked((prev) => {
-            const next = [...prev];
-            next[index] = false;
-            return next;
-          });
+          setValues((prev) => { const next = [...prev]; next[index] = ""; return next; });
+          setMasked((prev) => { const next = [...prev]; next[index] = false; return next; });
         }
         e.preventDefault();
       }
@@ -100,7 +72,6 @@ export function InputPin({
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-      // Only allow digits
       const digit = e.target.value.replace(/\D/g, "").slice(-1);
       if (!digit) return;
 
@@ -108,13 +79,8 @@ export function InputPin({
       next[index] = digit;
       setValues(next);
 
-      // Mask after short delay — same 100ms as the original
       setTimeout(() => {
-        setMasked((prev) => {
-          const m = [...prev];
-          m[index] = true;
-          return m;
-        });
+        setMasked((prev) => { const m = [...prev]; m[index] = true; return m; });
 
         const joined = next.join("");
         onChange?.(joined);
@@ -122,7 +88,6 @@ export function InputPin({
         if (next.every(Boolean)) {
           inputRefs.current[index]?.blur();
           onComplete?.(joined);
-          // Reset after completion
           setTimeout(() => {
             setValues(Array(length).fill(""));
             setMasked(Array(length).fill(false));
@@ -137,25 +102,30 @@ export function InputPin({
   );
 
   return (
-    <div className={`input-pin ${disabled ? "input-pin--disabled" : ""}`}>
+    <div className={`flex gap-3 ${disabled ? "pointer-events-none" : ""}`}>
       {values.map((val, i) => (
-        <div key={i} className="input-pin__field">
-          <input
-            ref={(el) => { inputRefs.current[i] = el; }}
-            type="text"
-            inputMode="numeric"
-            maxLength={1}
-            value={masked[i] ? "•" : val}
-            disabled={disabled}
-            data-index={i}
-            className={`input-pin__input ${val ? "has-value" : ""}`}
-            onClick={() => handleClick(i)}
-            onKeyDown={(e) => handleKeyDown(e, i)}
-            onChange={(e) => handleChange(e, i)}
-            autoComplete="off"
-            aria-label={`Dígito ${i + 1} de ${length}`}
-          />
-        </div>
+        <input
+          key={i}
+          ref={(el) => { inputRefs.current[i] = el; }}
+          type="text"
+          inputMode="numeric"
+          maxLength={1}
+          value={masked[i] ? "•" : val}
+          disabled={disabled}
+          data-index={i}
+          onClick={() => handleClick(i)}
+          onKeyDown={(e) => handleKeyDown(e, i)}
+          onChange={(e) => handleChange(e, i)}
+          autoComplete="off"
+          aria-label={`Dígito ${i + 1} de ${length}`}
+          className={[
+            "w-14 h-16 text-center text-2xl font-semibold rounded-xl border-2 outline-none",
+            "bg-white caret-transparent transition-all duration-150",
+            "focus:border-blue-600 focus:shadow-[0_0_0_3px_rgba(0,82,204,0.15)]",
+            "disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed",
+            val ? "border-gray-400 text-gray-800" : "border-gray-200 text-gray-400",
+          ].join(" ")}
+        />
       ))}
     </div>
   );

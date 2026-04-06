@@ -1,8 +1,9 @@
-import { useRef, useEffect, ReactNode } from "react";
+import { Children, useRef, useEffect, ReactNode } from "react";
 import { useCardSliderDrag } from "./useCardSliderDrag";
 import { useCardSliderScroll } from "./useCardSliderScroll";
 import { useCardSliderItems } from "./useCardSliderItems";
-import "./CardSlider.css";
+
+const GAP = 16;
 
 interface CardSliderProps {
   children: ReactNode;
@@ -22,40 +23,77 @@ export function CardSlider({
   const { edge, onScroll, scrollTo, updateEdgeState } = useCardSliderScroll({ speed, distance, step });
   const { startDragging, stopDragging, onMouseMove } = useCardSliderDrag(itemsRef);
 
-  // Check edge state on mount and whenever itemsVisible changes
   useEffect(() => {
     if (itemsRef.current) updateEdgeState(itemsRef.current);
   }, [itemsVisible, updateEdgeState]);
 
-  const containerClass = [
-    "cardslider",
-    !edge.atStart && !edge.atEnd ? "has-scroll" : "",
-    edge.atStart ? "start-of-scroll" : "",
-    edge.atEnd ? "end-of-scroll" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const itemStyle: React.CSSProperties = {
+    flex: `0 0 calc((100% - ${itemsVisible - 1} * ${GAP}px) / ${itemsVisible})`,
+    minWidth: 0,
+  };
+
+  const fadeHeight = "calc(100% - 56px)";
 
   return (
-    <div
-      className={containerClass}
-      style={{ "--items": itemsVisible } as React.CSSProperties}
-    >
+    <div style={{ position: "relative", overflow: "hidden" }}>
+      {/* Left fade */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: 40,
+          height: fadeHeight,
+          pointerEvents: "none",
+          zIndex: 10,
+          background: "linear-gradient(to right, white, transparent)",
+          opacity: edge.atStart ? 0 : 1,
+          transition: "opacity 0.2s",
+        }}
+      />
+      {/* Right fade */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: 40,
+          height: fadeHeight,
+          pointerEvents: "none",
+          zIndex: 10,
+          background: "linear-gradient(to left, white, transparent)",
+          opacity: edge.atEnd ? 0 : 1,
+          transition: "opacity 0.2s",
+        }}
+      />
+
+      {/* Scrollable track */}
       <div
         ref={itemsRef}
-        className="cardslider__items"
+        style={{
+          display: "flex",
+          gap: GAP,
+          overflowX: "auto",
+          scrollBehavior: "smooth",
+          scrollbarWidth: "none",
+          cursor: "grab",
+          userSelect: "none",
+        }}
         onScroll={onScroll}
         onMouseDown={startDragging}
         onMouseMove={onMouseMove}
         onMouseUp={stopDragging}
         onMouseLeave={stopDragging}
       >
-        {children}
+        {Children.map(children, (child) => (
+          <div style={itemStyle}>{child}</div>
+        ))}
       </div>
 
-      <div className="cardslider__arrows">
+      {/* Navigation arrows */}
+      <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16 }}>
         <button
-          className={`cardslider__arrow cardslider__arrow--prev ${edge.atStart ? "disabled" : ""}`}
+          className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center transition-[opacity,background-color] duration-200 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-default disabled:pointer-events-none"
           onClick={() => itemsRef.current && scrollTo(itemsRef.current, "left")}
           aria-label="Previous"
           disabled={edge.atStart}
@@ -63,7 +101,7 @@ export function CardSlider({
           ←
         </button>
         <button
-          className={`cardslider__arrow cardslider__arrow--next ${edge.atEnd ? "disabled" : ""}`}
+          className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center transition-[opacity,background-color] duration-200 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-default disabled:pointer-events-none"
           onClick={() => itemsRef.current && scrollTo(itemsRef.current, "right")}
           aria-label="Next"
           disabled={edge.atEnd}

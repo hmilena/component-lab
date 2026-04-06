@@ -33,7 +33,7 @@ export function useDrawerInitialHeight() {
 
 export function useBodyScrollLock(isOpen: boolean) {
   useEffect(() => {
-    document.body.classList.toggle("lock-body", isOpen);
-    return () => document.body.classList.remove("lock-body");
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 }

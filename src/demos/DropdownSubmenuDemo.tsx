@@ -30,49 +30,82 @@ const MENU_COM_SUBNIVEIS: MenuItem[] = [
   { id: "sair", label: "Sair", href: "#" },
 ];
 
+const features = [
+  "Dois níveis de navegação",
+  "Só um submenu aberto de cada vez",
+  "Active state propaga dos filhos para o trigger",
+  "Fecha ao clicar fora",
+  "Fecha ao carregar ESC",
+  "Fecha ao clicar num item folha",
+  "Animação de entrada com fade + slide",
+];
+
 export function DropdownSubmenuDemo() {
   return (
-    <div className="demo-page">
-      <h1>Dropdown Submenu</h1>
-      <p className="demo-description">
-        Dropdown com dois níveis de navegação, propagação de active state e
-        fechamento por ESC ou click fora. Reescrita do{" "}
-        <code>DropdownSubmenu_Core.js</code> produzido para o BPI Net Empresas.
-      </p>
-
-      <div className="demo-section">
-        <h2>Sem subníveis</h2>
-        <DropdownSubmenu label="Menu" items={MENU_SIMPLES} />
-      </div>
-
-      <div className="demo-section">
-        <h2>Com subníveis</h2>
-        <div style={{ display: "flex", gap: 12 }}>
-          <DropdownSubmenu
-            label="Meu Banco"
-            items={MENU_COM_SUBNIVEIS}
-            defaultActiveId="credito"
-          />
-          <DropdownSubmenu label="Outro menu" items={MENU_SIMPLES} />
-        </div>
-        <p style={{ marginTop: 16, fontSize: 13, color: "#888" }}>
-          "Crédito" está marcado como activo — o estado propaga até ao trigger.
-          Abre os dois menus e vê como fecham entre si.
+    <div className="max-w-2xl mx-auto px-6 py-8 space-y-10">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Dropdown Submenu</h1>
+        <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+          Dropdown com dois níveis de navegação, propagação de active state e fechamento por ESC ou
+          click fora. Reescrita do{" "}
+          <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
+            DropdownSubmenu_Core.js
+          </code>{" "}
+          produzido para o BPI Net Empresas.
         </p>
       </div>
 
-      <div className="demo-section">
-        <h2>Funcionalidades</h2>
-        <ul className="feature-list">
-          <li>✅ Dois níveis de navegação</li>
-          <li>✅ Só um submenu aberto de cada vez</li>
-          <li>✅ Active state propaga dos filhos para o trigger</li>
-          <li>✅ Fecha ao clicar fora</li>
-          <li>✅ Fecha ao carregar ESC</li>
-          <li>✅ Fecha ao clicar num item folha</li>
-          <li>✅ Animação de entrada com fade + slide</li>
+      {/* Demo card */}
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+          Demo
+        </h2>
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 space-y-8">
+          <div>
+            <p className="text-xs text-gray-400 mb-3">Sem subníveis</p>
+            <DropdownSubmenu label="Menu" items={MENU_SIMPLES} />
+          </div>
+
+          <div>
+            <p className="text-xs text-gray-400 mb-3">Com subníveis</p>
+            <div className="flex gap-3">
+              <DropdownSubmenu
+                label="Meu Banco"
+                items={MENU_COM_SUBNIVEIS}
+                defaultActiveId="credito"
+              />
+              <DropdownSubmenu label="Outro menu" items={MENU_SIMPLES} />
+            </div>
+            <p className="mt-4 text-xs text-gray-400">
+              "Crédito" está marcado como activo — o estado propaga até ao trigger. Abre os dois
+              menus e vê como fecham entre si.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+          Funcionalidades
+        </h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {features.map((f) => (
+            <li
+              key={f}
+              className="flex items-start gap-2 text-sm text-gray-600 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-xs"
+            >
+              <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                <svg className="w-2.5 h-2.5" viewBox="0 0 10 10" fill="currentColor">
+                  <path fillRule="evenodd" d="M8.354 2.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L3.5 6.793l4.146-4.147a.5.5 0 01.708 0z" clipRule="evenodd" />
+                </svg>
+              </span>
+              {f}
+            </li>
+          ))}
         </ul>
-      </div>
+      </section>
     </div>
   );
 }

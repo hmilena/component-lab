@@ -1,5 +1,4 @@
 import { CardSlider } from "../components/CardSlider";
-import "./CardSliderDemo.css";
 
 const CARDS = [
   { id: 1, title: "Card 1", color: "#e8f4f8" },
@@ -12,41 +11,72 @@ const CARDS = [
   { id: 8, title: "Card 8", color: "#f0f8e8" },
 ];
 
+const features = [
+  "Drag-to-scroll com mouse",
+  "Navegação por botões com scroll animado",
+  "Botões desabilitados nos limites",
+  "Fade nas bordas para indicar overflow",
+  "4 cards no desktop / 3 no tablet / 2 no mobile",
+  "ResizeObserver — adapta sem reload",
+];
+
 export function CardSliderDemo() {
   return (
-    <div className="demo-page">
-      <h1>Card Slider</h1>
-      <p className="demo-description">
-        Slider horizontal com drag-to-scroll, botões de navegação animados e
-        número de cards responsivo. Reescrita do <code>CardSlider.js</code> produzido para o BPI Net Empresas.
-      </p>
+    <div className="max-w-2xl mx-auto px-6 py-8 space-y-10">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Card Slider</h1>
+        <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+          Slider horizontal com drag-to-scroll, botões de navegação animados e número de cards
+          responsivo. Reescrita do{" "}
+          <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
+            CardSlider.js
+          </code>{" "}
+          produzido para o BPI Net Empresas.
+        </p>
+      </div>
 
-      <div className="demo-section">
-        <h2>Demo</h2>
-        <CardSlider>
-          {CARDS.map((card) => (
-            <div
-              key={card.id}
-              className="demo-card"
-              style={{ background: card.color }}
+      {/* Demo card */}
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+          Demo
+        </h2>
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+          <CardSlider>
+            {CARDS.map((card) => (
+              <div
+                key={card.id}
+                className="h-40 rounded-xl flex items-center justify-center font-semibold text-sm text-gray-500 border border-black/5"
+                style={{ background: card.color }}
+              >
+                {card.title}
+              </div>
+            ))}
+          </CardSlider>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+          Funcionalidades
+        </h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {features.map((f) => (
+            <li
+              key={f}
+              className="flex items-start gap-2 text-sm text-gray-600 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-xs"
             >
-              <span>{card.title}</span>
-            </div>
+              <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                <svg className="w-2.5 h-2.5" viewBox="0 0 10 10" fill="currentColor">
+                  <path fillRule="evenodd" d="M8.354 2.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L3.5 6.793l4.146-4.147a.5.5 0 01.708 0z" clipRule="evenodd" />
+                </svg>
+              </span>
+              {f}
+            </li>
           ))}
-        </CardSlider>
-      </div>
-
-      <div className="demo-section">
-        <h2>Funcionalidades</h2>
-        <ul className="feature-list">
-          <li>✅ Drag-to-scroll com mouse</li>
-          <li>✅ Navegação por botões com scroll animado</li>
-          <li>✅ Botões desabilitados nos limites</li>
-          <li>✅ Fade nas bordas para indicar overflow</li>
-          <li>✅ 4 cards no desktop / 3 no tablet / 2 no mobile</li>
-          <li>✅ ResizeObserver — adapta sem reload</li>
         </ul>
-      </div>
+      </section>
     </div>
   );
 }

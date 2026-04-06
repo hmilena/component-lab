@@ -3,6 +3,17 @@ import { InputPin } from "../components/InputPin";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+const features = [
+  "Avanço automático ao digitar",
+  "Recuo com Backspace — apaga e volta ao campo anterior",
+  "Navegação com ← →",
+  "Máscara • após 100ms",
+  "Callback onComplete quando todos os campos preenchidos",
+  "Estado disabled durante validação",
+  "Reset automático após completar",
+  "Acessível — aria-label em cada campo",
+];
+
 export function InputPinDemo() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -11,7 +22,6 @@ export function InputPinDemo() {
     setStatus("loading");
     setMessage("");
 
-    // Simulates async PIN validation
     setTimeout(() => {
       if (value === "1234") {
         setStatus("success");
@@ -25,49 +35,86 @@ export function InputPinDemo() {
   };
 
   return (
-    <div className="demo-page">
-      <h1>Input Pin</h1>
-      <p className="demo-description">
-        Input de PIN com 4 campos independentes, máscara de dígitos, navegação
-        por teclado e validação ao completar. Reescrita do{" "}
-        <code>InputPinCore.js</code> produzido para o BPI Net Empresas.
-        <br />
-        <strong>PIN correto: 1234</strong>
-      </p>
+    <div className="max-w-2xl mx-auto px-6 py-8 space-y-10">
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Input Pin</h1>
+        <p className="mt-2 text-sm text-gray-500 leading-relaxed">
+          Input de PIN com 4 campos independentes, máscara de dígitos, navegação
+          por teclado e validação ao completar. Reescrita do{" "}
+          <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
+            InputPinCore.js
+          </code>{" "}
+          produzido para o BPI Net Empresas.
+        </p>
+        <p className="mt-2 text-sm font-semibold text-gray-700">
+          PIN correto:{" "}
+          <code className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-mono">
+            1234
+          </code>
+        </p>
+      </div>
 
-      <div className="demo-section">
-        <h2>Demo</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, alignItems: "flex-start" }}>
+      {/* Demo card */}
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+          Demo
+        </h2>
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-10 flex flex-col items-center gap-5">
           <InputPin
             length={4}
             onComplete={handleComplete}
             disabled={status === "loading" || status === "success"}
           />
-          {status === "loading" && (
-            <p style={{ color: "#666", fontSize: 14 }}>A validar…</p>
-          )}
-          {status === "success" && (
-            <p style={{ color: "#2a9d5c", fontWeight: 600, fontSize: 14 }}>{message}</p>
-          )}
-          {status === "error" && (
-            <p style={{ color: "#d0021b", fontSize: 14 }}>{message}</p>
-          )}
-        </div>
-      </div>
 
-      <div className="demo-section">
-        <h2>Funcionalidades</h2>
-        <ul className="feature-list">
-          <li>✅ Avanço automático ao digitar</li>
-          <li>✅ Recuo com Backspace — apaga e volta ao campo anterior</li>
-          <li>✅ Navegação com ← →</li>
-          <li>✅ Máscara • após 100ms</li>
-          <li>✅ Callback onComplete quando todos os campos preenchidos</li>
-          <li>✅ Estado disabled durante validação</li>
-          <li>✅ Reset automático após completar</li>
-          <li>✅ Acessível — aria-label em cada campo</li>
+          <div className="h-6 flex items-center justify-center">
+            {status === "loading" && (
+              <span className="flex items-center gap-2 text-sm text-gray-400">
+                <span className="inline-block w-3.5 h-3.5 rounded-full border-2 border-gray-300 border-t-blue-500 animate-spin" />
+                A validar…
+              </span>
+            )}
+            {status === "success" && (
+              <span className="flex items-center gap-1.5 text-sm font-semibold text-emerald-600">
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                {message}
+              </span>
+            )}
+            {status === "error" && (
+              <span className="flex items-center gap-1.5 text-sm text-red-500">
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3a1 1 0 002 0V7zm-1 6a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
+                </svg>
+                {message}
+              </span>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section>
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+          Funcionalidades
+        </h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {features.map((f) => (
+            <li
+              key={f}
+              className="flex items-start gap-2 text-sm text-gray-600 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-xs"
+            >
+              <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                <svg className="w-2.5 h-2.5" viewBox="0 0 10 10" fill="currentColor">
+                  <path fillRule="evenodd" d="M8.354 2.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L3.5 6.793l4.146-4.147a.5.5 0 01.708 0z" clipRule="evenodd" />
+                </svg>
+              </span>
+              {f}
+            </li>
+          ))}
         </ul>
-      </div>
+      </section>
     </div>
   );
 }
