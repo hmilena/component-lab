@@ -4,6 +4,10 @@ import { CardSliderDemo } from "./demos/CardSliderDemo";
 import { InputPinDemo } from "./demos/InputPinDemo";
 import { ContentPopoverDemo } from "./demos/ContentPopoverDemo";
 import { DropdownSubmenuDemo } from "./demos/DropdownSubmenuDemo";
+import { GalleryDemo } from "./demos/GalleryDemo";
+import { PostInteractionsDemo } from "./demos/PostInteractionsDemo";
+import { SkeletonDemo } from "./demos/SkeletonDemo";
+import { ReadingProgressBarDemo } from "./demos/ReadingProgressBarDemo";
 import "./App.css";
 
 const COMPONENTS = [
@@ -12,6 +16,10 @@ const COMPONENTS = [
   { id: "inputpin", label: "Input Pin" },
   { id: "popover", label: "Popover" },
   { id: "dropdown", label: "Dropdown Submenu" },
+  { id: "gallery", label: "Gallery & Lightbox" },
+  { id: "interactions", label: "Post Interactions" },
+  { id: "skeleton", label: "Skeleton" },
+  { id: "progress", label: "Reading Progress" },
 ];
 
 export default function App() {
@@ -40,6 +48,10 @@ export default function App() {
         {active === "inputpin" && <InputPinDemo />}
         {active === "popover" && <ContentPopoverDemo />}
         {active === "dropdown" && <DropdownSubmenuDemo />}
+        {active === "gallery" && <GalleryDemo />}
+        {active === "interactions" && <PostInteractionsDemo />}
+        {active === "skeleton" && <SkeletonDemo />}
+        {active === "progress" && <ReadingProgressBarDemo />}
       </main>
     </div>
   );
