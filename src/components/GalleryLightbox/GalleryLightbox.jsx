@@ -88,7 +88,7 @@ const GalleryLightbox = ({
           {isCleanView ? <FaCompress /> : <FaExpand />}
         </button>
 
-        {!isCleanView && <button className="lightbox-close" onClick={onClose}>✕</button>}
+        <button className="lightbox-close" onClick={onClose}>✕</button>
 
         <div className="lightbox-main">
           {!isCleanView && <button className="lightbox-prev" onClick={prev}>‹</button>}
