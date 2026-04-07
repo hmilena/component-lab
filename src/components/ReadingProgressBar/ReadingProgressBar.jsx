@@ -1,31 +1,30 @@
 import { useEffect, useState } from "react";
 import "../../styles/blog/ReadingProgressBar.scss";
 
-const ReadingProgressBar = ({ targetRef, readingTime }) => {
+const ReadingProgressBar = ({ targetRef, readingTime, sticky = false }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (!readingTime || !targetRef.current) return;
 
+    const element = targetRef.current;
+
     const updateProgress = () => {
-      if (!targetRef.current) return;
-      const element = targetRef.current;
-      const totalHeight = element.clientHeight - window.innerHeight;
-      const currentProgress = window.scrollY - element.offsetTop;
-      if (totalHeight === 0) return setProgress(0);
-      const percentage = (currentProgress / totalHeight) * 100;
+      const scrollable = element.scrollHeight - element.clientHeight;
+      if (scrollable === 0) return setProgress(0);
+      const percentage = (element.scrollTop / scrollable) * 100;
       setProgress(Math.min(100, Math.max(0, percentage)));
     };
 
-    window.addEventListener("scroll", updateProgress);
+    element.addEventListener("scroll", updateProgress);
     updateProgress();
-    return () => window.removeEventListener("scroll", updateProgress);
+    return () => element.removeEventListener("scroll", updateProgress);
   }, [targetRef, readingTime]);
 
   if (!readingTime) return null;
 
   return (
-    <div className="reading-progress-container">
+    <div className={`reading-progress-container${sticky ? " reading-progress-container--sticky" : ""}`}>
       <div className="reading-progress-bar" style={{ width: `${progress}%` }} />
     </div>
   );

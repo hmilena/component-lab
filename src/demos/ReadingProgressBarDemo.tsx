@@ -5,8 +5,8 @@ export function ReadingProgressBarDemo() {
   const contentRef = useRef<HTMLDivElement>(null);
 
   const features = [
-    "Fixed at the top of the viewport",
     "Tracks scroll position relative to a target element",
+    "Calculates progress from element's own scrollTop",
     "Animated progress bar with linear-gradient",
     "Optimized with scroll event listener",
     "Clean-up on unmount",
@@ -14,18 +14,16 @@ export function ReadingProgressBarDemo() {
 
   return (
     <div className="mx-auto space-y-10">
-      <ReadingProgressBar targetRef={contentRef} readingTime={5} />
-
       <div>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
           Progress bar that tracks the reading depth of an article.
         </p>
-        <p className="mt-.5 text-sm block text-gray-500 leading-relaxed">
-          Extracted from
+        <p className="mt-0.5 text-sm text-gray-500 leading-relaxed">
+          Extracted from{" "}
           <a
             href="https://blogdamia.com.br"
             target="_blank"
-            className="text-blue-500 ml-1 underline"
+            className="text-blue-500 underline"
           >
             www.blogdamia.com.br
           </a>
@@ -34,65 +32,160 @@ export function ReadingProgressBarDemo() {
 
       <section>
         <h2 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-          Demo (Scroll to see)
+          Demo — scroll the article below
         </h2>
-        <div
-          ref={contentRef}
-          className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 prose prose-slate"
-          style={{ maxHeight: "400px", overflowY: "auto" }}
-        >
-          <h3>The Future of the Web</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
-          </p>
-          <p>
-            Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam
-            varius, turpis et commodo pharetra, est eros bibendum elit, nec
-            luctus magna felis sollicitudin mauris. Integer in mauris eu nibh
-            euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec
-            lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu
-            tempor congue, eros est euismod turpis, id tincidunt sapien risus a
-            quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque
-            malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget,
-            consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet,
-            felis nisl adipiscing sapien, sed pretium diam manisl eget egestas.
-            Fugiat dapibus, tellus ac cursus commodo, mauris sit condimena nibh,
-            ut hendrerit nisi quamm r nisi.
-          </p>
-          <p>
-            Praesent ac sem eget est egestas volutpat. Nam pretium turpis et
-            arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet
-            iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu,
-            accumsan a, consectetuer eget, posuere ut, mauris. Praesent
-            adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy
-            metus. Vestibulum volutpat pretium libero. Cras id nisl. Suspendisse
-            in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus
-            luctus magna.
-          </p>
-          <p>
-            Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem,
-            at interdum magna augue eget diam. Vestibulum ante ipsum primis in
-            faucibus orci luctus et ultrices posuere cubilia Curae; Morbi
-            lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel
-            mi sit amet augue congue elementum. Morbi in ipsum sit amet pede
-            facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel,
-            egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut
-            ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis
-            est pulvinar ullamcorper. Nulla facilisi.
-          </p>
+
+        {/* Article card — progress bar sticks to the top of the scrollable area */}
+        <div className="rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <div
+            ref={contentRef}
+            className="bg-white"
+            style={{ maxHeight: "480px", overflowY: "auto" }}
+          >
+            <ReadingProgressBar targetRef={contentRef} readingTime={6} sticky />
+            <div className="p-8 prose prose-slate">
+            <h3>The Future of the Web: How Modern Technologies Are Reshaping the Internet</h3>
+
+            <p>
+              The web has come a long way since Tim Berners-Lee published his proposal for an
+              information management system in 1989. What started as a simple network of
+              interlinked documents has evolved into a global platform that powers everything
+              from social networks and e-commerce to real-time collaboration and artificial
+              intelligence applications. Today, the web is not just a place to consume
+              information — it is a living, breathing infrastructure that underpins modern
+              civilization.
+            </p>
+
+            <h4>Component-Based Architecture</h4>
+            <p>
+              One of the most transformative shifts in web development over the past decade has
+              been the rise of component-based architectures. Libraries like React, Vue, and
+              Svelte have fundamentally changed how developers think about building user
+              interfaces. Instead of working with entire pages, developers now compose
+              applications from small, reusable, and self-contained pieces called components.
+            </p>
+            <p>
+              This paradigm shift brings with it enormous benefits: code reuse, better
+              testability, easier maintenance, and a cleaner separation of concerns. A button
+              component defined once can be used hundreds of times across an application with
+              consistent behavior and styling. A form component can encapsulate all its
+              validation logic internally, exposing only a clean interface to the outside world.
+            </p>
+            <p>
+              The mental model changes too. Rather than thinking in pages, developers think in
+              trees of components, each managing its own state and lifecycle. This leads to more
+              predictable applications and makes it far easier to reason about what the UI will
+              look like given a certain set of inputs.
+            </p>
+
+            <h4>The Rise of the Edge</h4>
+            <p>
+              Traditional web architectures relied on centralized servers — usually located in
+              a handful of data centers around the world. A user in São Paulo making a request
+              to a server in Virginia would experience noticeable latency simply due to the
+              physical distance the data had to travel. Content delivery networks (CDNs) helped
+              by caching static assets closer to users, but dynamic content remained slow.
+            </p>
+            <p>
+              Edge computing changes this equation dramatically. By distributing compute
+              workloads across hundreds of points of presence worldwide, edge platforms allow
+              server-side logic to run mere milliseconds away from the end user. Personalized
+              content, authentication, A/B testing, and geolocation-based responses can all
+              happen at the edge without ever hitting a central origin server.
+            </p>
+            <p>
+              Platforms like Cloudflare Workers, Vercel Edge Functions, and Deno Deploy have
+              made edge computing accessible to any developer. The implications for performance
+              are profound: applications that once required hundreds of milliseconds of
+              server-side processing can now respond in under 50ms, anywhere in the world.
+            </p>
+
+            <h4>Web Performance as a Core Value</h4>
+            <p>
+              For years, performance was treated as an afterthought — something to optimize
+              once a product was feature-complete. That attitude has changed dramatically.
+              Research consistently shows that every 100ms of additional latency costs
+              e-commerce sites roughly 1% in revenue. Google's Core Web Vitals have made
+              performance a direct ranking signal in search results. Users, now accustomed to
+              near-instant experiences on native apps, have little patience for slow websites.
+            </p>
+            <p>
+              Modern performance optimization is multidimensional. It encompasses network-level
+              optimizations like HTTP/3 and resource hints, rendering strategies like
+              server-side rendering and incremental static regeneration, image optimization
+              through modern formats like WebP and AVIF, and JavaScript bundle splitting to
+              ensure users only download the code they actually need.
+            </p>
+            <p>
+              Tools like Lighthouse, WebPageTest, and the Chrome DevTools Performance panel
+              give developers unprecedented visibility into exactly where time is being spent.
+              The culture around performance has shifted: it is now a first-class concern,
+              measured continuously in CI/CD pipelines and monitored in production through
+              real user monitoring (RUM).
+            </p>
+
+            <h4>Accessibility Is Not Optional</h4>
+            <p>
+              The web was designed from its inception to be universal — accessible to everyone,
+              regardless of device, location, or ability. In practice, however, accessibility
+              has often been deprioritized in favor of speed-to-market. The result is a web
+              that remains unnecessarily difficult or impossible to use for the estimated one
+              billion people worldwide who live with some form of disability.
+            </p>
+            <p>
+              Semantic HTML, ARIA attributes, keyboard navigation, sufficient color contrast,
+              and screen reader support are not just nice-to-haves — in many jurisdictions,
+              they are legal requirements. The Web Content Accessibility Guidelines (WCAG),
+              now at version 2.2, provide a comprehensive framework for making web content
+              accessible to the widest possible audience.
+            </p>
+            <p>
+              Encouragingly, accessibility is increasingly being treated as a design constraint
+              from the very beginning of a project rather than a checklist to tick off before
+              launch. Tools like axe, Storybook's a11y addon, and browser extensions that
+              simulate various visual impairments make it easier than ever to catch
+              accessibility issues early in the development process.
+            </p>
+
+            <h4>The AI-Augmented Developer</h4>
+            <p>
+              Perhaps the most significant disruption on the horizon for web development is the
+              integration of artificial intelligence into the development workflow itself. AI
+              coding assistants can now generate boilerplate, suggest completions, explain
+              unfamiliar code, identify bugs, and even write tests. For routine tasks, the
+              productivity gains are substantial.
+            </p>
+            <p>
+              But AI is not replacing developers — it is changing what developers spend their
+              time on. With AI handling the mechanical parts of coding, developers are freed to
+              focus on higher-level concerns: system design, user experience, performance
+              architecture, and the subtle judgment calls that require deep contextual
+              understanding of a product and its users.
+            </p>
+            <p>
+              The developers who will thrive in this new landscape are those who can
+              effectively collaborate with AI tools — knowing when to trust their suggestions,
+              when to push back, and how to critically evaluate generated code for correctness,
+              security, and maintainability.
+            </p>
+
+            <h4>Looking Ahead</h4>
+            <p>
+              The web of tomorrow will be faster, more accessible, more intelligent, and more
+              distributed than anything we have seen before. WebAssembly will bring
+              near-native performance to browser-based applications. WebGPU will open up
+              GPU-accelerated computing directly in the browser. Progressive Web Apps will
+              continue to close the gap with native applications.
+            </p>
+            <p>
+              Through all of this change, the fundamental values of the web remain constant:
+              openness, interoperability, and universal access. The developers and designers
+              who build the web carry a profound responsibility — and a remarkable opportunity
+              — to shape how billions of people experience and interact with the digital world.
+            </p>
+            </div>
+          </div>
         </div>
-        <p className="text-xs text-gray-400 mt-3 text-center">
-          ↑ The bar appears at the TOP of the page when scrolling this box ↑
-        </p>
       </section>
 
       <section>
@@ -106,11 +199,7 @@ export function ReadingProgressBarDemo() {
               className="flex items-start gap-2 text-sm text-gray-600 bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-xs"
             >
               <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
-                <svg
-                  className="w-2.5 h-2.5"
-                  viewBox="0 0 10 10"
-                  fill="currentColor"
-                >
+                <svg className="w-2.5 h-2.5" viewBox="0 0 10 10" fill="currentColor">
                   <path
                     fillRule="evenodd"
                     d="M8.354 2.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L3.5 6.793l4.146-4.147a.5.5 0 01.708 0z"
