@@ -1,5 +1,5 @@
-@use './variables' as v;
-@use './mixins' as m;
+@use "./variables" as v;
+@use "./mixins" as m;
 
 .gallery {
   @include m.flex-column(v.$gap-sm);
@@ -40,7 +40,9 @@
     font-size: 22px;
     color: v.$color-text;
     box-shadow: v.$shadow-sm;
-    transition: background v.$transition-fast, opacity v.$transition-fast;
+    transition:
+      background v.$transition-fast,
+      opacity v.$transition-fast;
     z-index: 1;
 
     &:hover:not(:disabled) {
@@ -59,8 +61,11 @@
     overflow-x: auto;
     scrollbar-width: none;
     padding: 2px 0;
+    justify-content: center;
 
-    &::-webkit-scrollbar { display: none; }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &-thumb {

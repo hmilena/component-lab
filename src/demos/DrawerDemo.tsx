@@ -17,19 +17,17 @@ export function DrawerDemo() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-8 space-y-10">
+    <div className="mx-auto space-y-10">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
-          Drawer
-        </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
           Side panel on desktop, bottom sheet on mobile. A rewrite of the{" "}
           <code className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-700 font-mono text-xs">
             Drawer.js
           </code>{" "}
           originally built for BPI Net Empresas. Resize the window below{" "}
-          <strong className="text-gray-700">750px</strong> to see the behavior change.
+          <strong className="text-gray-700">750px</strong> to see the behavior
+          change.
         </p>
       </div>
 
@@ -85,7 +83,8 @@ export function DrawerDemo() {
           mobile — with swipe to dismiss.
         </p>
         <p className="text-gray-500 text-sm leading-relaxed mb-6">
-          Try closing it in three ways: the ✕ button, clicking the overlay, or pressing ESC.
+          Try closing it in three ways: the ✕ button, clicking the overlay, or
+          pressing ESC.
         </p>
         <button
           className="px-4 py-2 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors cursor-pointer border-0"

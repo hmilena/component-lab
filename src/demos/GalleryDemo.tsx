@@ -58,11 +58,8 @@ export function GalleryDemo() {
   const { isOpen, initialIndex, open, close } = useLightboxGallery();
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-8 space-y-10">
+    <div className="mx-auto space-y-10">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
-          Gallery & Lightbox
-        </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
           Image gallery with thumbnails and full-screen lightbox.
         </p>
@@ -97,7 +94,7 @@ export function GalleryDemo() {
               <img src={item.thumb} alt={item.alt} />
             )}
           />
-          <p className="text-xs text-gray-400 mt-3">
+          <p className="text-xs text-gray-400 mt-3 text-center">
             Click the main image to open the lightbox.
           </p>
         </div>

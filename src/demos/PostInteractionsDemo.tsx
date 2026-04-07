@@ -39,11 +39,8 @@ const ratingFeatures = [
 
 export function PostInteractionsDemo() {
   return (
-    <div className="max-w-2xl mx-auto px-6 py-8 space-y-10">
+    <div className="mx-auto space-y-10">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
-          Post Interactions
-        </h1>
         <p className="mt-2 text-sm text-gray-500 leading-relaxed">
           Likes and ratings for blog posts with optimistic UI and persistence.
         </p>

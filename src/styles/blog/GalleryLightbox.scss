@@ -1,5 +1,5 @@
-@use './variables' as v;
-@use './mixins' as m;
+@use "./variables" as v;
+@use "./mixins" as m;
 
 .lightbox {
   &-backdrop {
@@ -9,6 +9,7 @@
     z-index: 9000;
     @include m.flex-center;
     backdrop-filter: blur(4px);
+    height: 100%;
   }
 
   position: relative;
@@ -39,10 +40,12 @@
     height: 32px;
     @include m.flex-center;
     border-radius: v.$radius-full;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     transition: background v.$transition-fast;
 
-    &:hover { background: rgba(255,255,255,0.22); }
+    &:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
   }
 
   &-toggle-clean {
@@ -56,12 +59,16 @@
     height: 32px;
     @include m.flex-center;
     border-radius: v.$radius-full;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     transition: background v.$transition-fast;
 
-    &:hover { background: rgba(255,255,255,0.22); }
+    &:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
 
-    &--active { background: rgba(255,255,255,0.28); }
+    &--active {
+      background: rgba(255, 255, 255, 0.28);
+    }
   }
 
   &-main {
@@ -92,12 +99,14 @@
     width: 44px;
     height: 44px;
     border-radius: v.$radius-full;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
     font-size: 24px;
     transition: background v.$transition-fast;
 
-    &:hover { background: rgba(255,255,255,0.2); }
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
   }
 
   &-thumbs {
@@ -109,13 +118,18 @@
     user-select: none;
     padding: 4px 0;
 
-    &:active { cursor: grabbing; }
-    &::-webkit-scrollbar { display: none; }
+    &:active {
+      cursor: grabbing;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     &-wrapper {
       display: flex;
       align-items: center;
       gap: v.$gap-xs;
+      justify-content: center;
     }
 
     &-arrow {
@@ -125,13 +139,18 @@
       width: 28px;
       height: 28px;
       border-radius: v.$radius-full;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       color: white;
       font-size: 18px;
       transition: background v.$transition-fast;
 
-      &:hover:not(:disabled) { background: rgba(255,255,255,0.2); }
-      &:disabled { opacity: 0.3; cursor: default; }
+      &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
     }
   }
 
@@ -142,7 +161,9 @@
     overflow: hidden;
     border: 2px solid transparent;
     opacity: 0.55;
-    transition: opacity v.$transition-fast, border-color v.$transition-fast;
+    transition:
+      opacity v.$transition-fast,
+      border-color v.$transition-fast;
 
     img {
       width: 72px;
@@ -151,7 +172,9 @@
       display: block;
     }
 
-    &:hover { opacity: 0.8; }
+    &:hover {
+      opacity: 0.8;
+    }
 
     &--active {
       border-color: v.$color-primary;
